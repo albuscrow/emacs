@@ -1,4 +1,6 @@
-((dired-isearch status "installed" recipe
+((auto-complete+ status "installed" recipe
+                 (:name auto-complete+ :auto-generated t :type emacswiki :description "Auto complete plus" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/auto-complete+.el"))
+ (dired-isearch status "installed" recipe
                 (:name dired-isearch :auto-generated t :type emacswiki :description "isearch in Dired" :website "https://raw.github.com/emacsmirror/emacswiki.org/master/dired-isearch.el"))
  (dired-view status "installed" recipe
              (:name dired-view :description "Dired view mode" :type emacswiki :features dired-view))

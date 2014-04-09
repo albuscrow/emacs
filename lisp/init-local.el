@@ -107,29 +107,55 @@
 (define-key dired-mode-map (kbd ";") 'dired-view-minor-mode-toggle)
 (define-key dired-mode-map (kbd ":") 'dired-view-minor-mode-dired-toggle)
 
-;;隐藏隐藏文件
-(dired-omit-mode 1)
-
 (require 'dired-details+)
 
-(require 'yasnippet)
-(yas/global-mode 1)
+(setq dired-omit-files "^#\\|^\\..*")
 
+;;隐藏隐藏文件
+(add-hook 'dired-mode-hook
+          (lambda ()
+            (dired-omit-mode 1)))                 ; initially omit unintrested files
+
+(require 'yasnippet)
+(yas-global-mode 1)
+
+(require 'auto-complete+)
 (require 'auto-complete-config)
-(setq ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20140208.653/dict")
-(ac-config-default)
+
+;; (ac-config-default)
+;; (setq ac-dwim t)
+;; (setq ac-auto-start nil)
+;; (define-key ac-mode-map (kbd "M-/") 'auto-complete)
 
 (require 'auto-complete-clang-async)
 (defun ac-cc-mode-setup ()
-  (setq ac-clang-complete-executable "~/.emacs.d/elpa/auto-complete-clang-async-20130526.814/clang-complete")
-  (setq ac-sources '(ac-source-clang-async))
-  (ac-clang-launch-completion-process)
-  )
+  "Set up some about clang-async."
+  (setq ac-clang-complete-executable "~/.emacs.d/clang-complete")
+  (push 'ac-source-clang-async ac-sources)
+  (ac-clang-launch-completion-process))
 (defun my-ac-config ()
+  "My ac config."
   (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-  (add-hook 'auto-complete-mode-hook 'ac-common-setup)
+  ;; (add-hook 'auto-complete-mode-hook 'ac-common-setup)
   (global-auto-complete-mode t))
 (my-ac-config)
 
+(setq ac-dwim-enable t)
+(setq ac-dictionary-directories "~/.emacs.d/dict")
+(setq ac-auto-start t)
+(setq ac-auto-show-menu nil)
+(setq ac-quick-help-delay 2.5)
+(ac-set-trigger-key "TAB")
+(define-key ac-mode-map  (kbd "M-/") 'auto-complete)
+(define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
+(setq ac-use-comphist t)
+
+(require 'evil)
+(evil-mode 1)
+(add-hook 'emacs-lisp-mode-hook (lambda ()
+                                  (setq flycheck-emacs-lisp-load-path load-path)))
+
+(add-hook 'slime-repl-mode-hook (lambda ()
+                                  (define-key slime-repl-mode-map (kbd "M-RET") 'newline-and-indent)))
 (provide 'init-local)
 ;;; init-local.el ends here

@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads nil "doxymacs/lisp/doxymacs" "doxymacs/lisp/doxymacs.el"
-;;;;;;  (21249 46930 379762 961000))
+;;;;;;  (21264 19438 312315 533000))
 ;;; Generated autoloads from doxymacs/lisp/doxymacs.el
 
 (or (assoc 'doxymacs-mode minor-mode-alist) (setq minor-mode-alist (cons '(doxymacs-mode " doxy") minor-mode-alist)))
@@ -55,8 +55,8 @@ Note that this only works if the opening tag starts at column 0.
 
 ;;;### (autoloads (el-get-checksum el-get-make-recipes el-get-cd
 ;;;;;;  el-get-self-update el-get-update-packages-of-type el-get-update-all
-;;;;;;  el-get-version) "el-get/el-get" "el-get/el-get.el" (21249
-;;;;;;  40474 941145 366000))
+;;;;;;  el-get-version) "el-get/el-get" "el-get/el-get.el" (21264
+;;;;;;  14509 560997 345000))
 ;;; Generated autoloads from el-get/el-get.el
 
 (autoload 'el-get-version "el-get/el-get" "\
@@ -98,7 +98,7 @@ Compute the checksum of the given package, and put it in the kill-ring
 ;;;***
 
 ;;;### (autoloads (el-get-list-packages) "el-get/el-get-list-packages"
-;;;;;;  "el-get/el-get-list-packages.el" (21249 40474 939145 440000))
+;;;;;;  "el-get/el-get-list-packages.el" (21264 14509 559997 236000))
 ;;; Generated autoloads from el-get/el-get-list-packages.el
 
 (autoload 'el-get-list-packages "el-get/el-get-list-packages" "\
@@ -110,7 +110,7 @@ Display a list of packages.
 
 ;;;### (autoloads (linum-update-window linum+-generate-linum-format
 ;;;;;;  linum+-smart-format linum+-dynamic-format linum-format) "linum+/linum+"
-;;;;;;  "linum+/linum+.el" (21249 41026 339880 91000))
+;;;;;;  "linum+/linum+.el" (21264 19428 638323 969000))
 ;;; Generated autoloads from linum+/linum+.el
 
 (defvar linum-format 'smart "\
@@ -154,12 +154,12 @@ Update line numbers for the portion visible in window WIN.
 
 ;;;***
 
-;;;### (autoloads nil nil ("dired-isearch/dired-isearch.el" "dired-view/dired-view.el"
-;;;;;;  "el-get/el-get-autoloads.el" "el-get/el-get-build.el" "el-get/el-get-byte-compile.el"
-;;;;;;  "el-get/el-get-core.el" "el-get/el-get-custom.el" "el-get/el-get-dependencies.el"
-;;;;;;  "el-get/el-get-install.el" "el-get/el-get-methods.el" "el-get/el-get-notify.el"
-;;;;;;  "el-get/el-get-recipes.el" "el-get/el-get-status.el") (21249
-;;;;;;  49218 980583 300000))
+;;;### (autoloads nil nil ("auto-complete+/auto-complete+.el" "dired-isearch/dired-isearch.el"
+;;;;;;  "dired-view/dired-view.el" "el-get/el-get-autoloads.el" "el-get/el-get-build.el"
+;;;;;;  "el-get/el-get-byte-compile.el" "el-get/el-get-core.el" "el-get/el-get-custom.el"
+;;;;;;  "el-get/el-get-dependencies.el" "el-get/el-get-install.el"
+;;;;;;  "el-get/el-get-methods.el" "el-get/el-get-notify.el" "el-get/el-get-recipes.el"
+;;;;;;  "el-get/el-get-status.el") (21317 3468 612930 402000))
 
 ;;;***
 
