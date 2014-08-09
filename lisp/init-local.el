@@ -116,16 +116,13 @@
           (lambda ()
             (dired-omit-mode 1)))                 ; initially omit unintrested files
 
+;;补全
+(add-to-list 'ac-modes 'glsl-mode)
 (require 'yasnippet)
 (yas-global-mode 1)
 
 (require 'auto-complete+)
 (require 'auto-complete-config)
-
-;; (ac-config-default)
-;; (setq ac-dwim t)
-;; (setq ac-auto-start nil)
-;; (define-key ac-mode-map (kbd "M-/") 'auto-complete)
 
 (require 'auto-complete-clang-async)
 (defun ac-cc-mode-setup ()
@@ -145,17 +142,73 @@
 (setq ac-auto-start t)
 (setq ac-auto-show-menu nil)
 (setq ac-quick-help-delay 2.5)
-(ac-set-trigger-key "TAB")
+(ac-set-trigger-key (kbd "TAB"))
 (define-key ac-mode-map  (kbd "M-/") 'auto-complete)
 (define-key ac-complete-mode-map (kbd "C-s") 'ac-isearch)
 (setq ac-use-comphist t)
 
+;;vim-mode
 (require 'evil)
 (evil-mode 1)
+
+;;set flycheck path for elisp
 (add-hook 'emacs-lisp-mode-hook (lambda ()
                                   (setq flycheck-emacs-lisp-load-path load-path)))
 
+;;set new line keybind for slime-repl
 (add-hook 'slime-repl-mode-hook (lambda ()
                                   (define-key slime-repl-mode-map (kbd "M-RET") 'newline-and-indent)))
+;;set the table width
+(setq-default c-basic-offset 4 tab-width 4 indent-tabs-mode t)
+;;set something for python
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (setq indent-tabs-mode t)
+;;             (whitespace-cleanup-mode 0)
+;;             (setq python-indent 4)))
+
+
+(setq whitespace-tab-width 4)
+;;set something for makefile mode;
+(add-hook 'makefile-mode-hook
+          (lambda ()
+            (whitespace-cleanup-mode 0)))
+
+;;set some for term mode;
+(add-hook 'term-mode-hook
+          (lambda ()
+            (yas-minor-mode -1)))
+
+
+(mapc (lambda (mode)
+      (add-hook 'LaTeX-mode-hook mode))
+      (list 'auto-fill-mode
+            'LaTeX-math-mode
+            'turn-on-reftex
+            'linum-mode))
+
+
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (setq TeX-auto-untabify t     ; remove all tabs before saving
+                  TeX-engine 'xetex       ; use xelatex default
+                  TeX-show-compilation t
+                  TeX-newline-function 'newline-and-indent) ; display compilation windows
+            (TeX-global-PDF-mode t)       ; PDF mode enable, not plain
+            (setq TeX-save-query nil)
+            (imenu-add-menubar-index)
+            (yas-minor-mode -1)
+            (define-key LaTeX-mode-map (kbd "M-/") 'TeX-complete-symbol)))
+
+(set-language-environment 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-clipboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(modify-coding-system-alist 'process "*" 'utf-8)
+(setq default-process-coding-system
+            '(utf-8 . utf-8))
+(setq-default pathname-coding-system 'utf-8)
 (provide 'init-local)
 ;;; init-local.el ends here
